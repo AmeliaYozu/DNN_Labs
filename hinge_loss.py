@@ -19,7 +19,7 @@ def hinge_loss_per_example(Y, S):
 				Li+=max(0,sj-s[y]+1)
 		L.append(Li)
 	loss = sum(L)/Y.shape[0]
-	return loss
+	return (L,loss)
 
 
 if __name__ == "__main__":
@@ -43,6 +43,6 @@ if __name__ == "__main__":
 
 	#Scoring function
 	S = W.dot(X_trans)+b
-	loss = hinge_loss_per_example(Y, S)
+	(L,loss) = hinge_loss_per_example(Y, S)
 	print("The hinge loss is {}".format(loss))
 
