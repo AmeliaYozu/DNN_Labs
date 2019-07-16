@@ -9,9 +9,9 @@ def cross_entropy_loss(Y, S):
 	for i in range(Y.shape[0]):
 		s = S[:,i]
 		y = Y[i]
-		l = np.exp(s[y])/np.sum(np.exp(s))
+		l = -np.log(np.exp(s[y])/np.sum(np.exp(s)))
 		L.append(l)
-	loss = -np.log(np.sum(L)/Y.shape[0])
+	loss = np.sum(L)/Y.shape[0]
 	return (L, loss)
 
 
